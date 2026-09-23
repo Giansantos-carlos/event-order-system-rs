@@ -13,6 +13,12 @@ pub async fn lock_stock(conn: &mut PgConnection, product_id: &str) -> sqlx::Resu
         .await
 }
 
+pub async fn list_stock(pool: &PgPool) -> sqlx::Result<Vec<Stock>> {
+    sqlx::query_as::<_, Stock>("SELECT * FROM stock ORDER BY product_id")
+        .fetch_all(pool)
+        .await
+}
+
 pub async fn decrement_stock(conn: &mut PgConnection, product_id: &str, quantity: i32) -> sqlx::Result<()> {
     sqlx::query("UPDATE stock SET available_qty = available_qty - $1, version = version + 1 WHERE product_id = $2")
         .bind(quantity)

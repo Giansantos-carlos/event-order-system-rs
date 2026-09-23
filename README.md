@@ -1,7 +1,6 @@
 # Event Order System (Rust)
 
-Rust port of the [Java/Spring Boot version](../event-order-system) — same distributed saga, same
-guarantees, different runtime. Three services (`order-service`, `payment-service`,
+A distributed order-processing saga in Rust. Three services (`order-service`, `payment-service`,
 `inventory-service`) built on `axum` + `sqlx` + `rdkafka`, talking to each other exclusively
 through Kafka (Redpanda), with no orchestrator.
 
@@ -43,7 +42,7 @@ sequenceDiagram
     end
 ```
 
-## Patterns implemented (same as the Java version, different mechanics)
+## Patterns implemented
 
 **Transactional outbox.** Every state change and the event describing it are written in the same
 `sqlx` transaction (see `service::create_order`, `service::process_payment`,
@@ -64,33 +63,31 @@ envelope to `<topic>.DLT` and moves on, so one poison message can't block the pa
 
 **Row-level locking.** `inventory-service` locks every `stock` row touched by an order with
 `SELECT ... FOR UPDATE`, sorted by product ID first to avoid deadlocking two orders that both
-touch multiple products — same reasoning as the pessimistic lock in the Java version, expressed
-directly in SQL since sqlx has no ORM-level lock annotation to lean on.
+touch multiple products, expressed directly in SQL since sqlx has no ORM-level lock annotation to
+lean on.
 
 **Cross-topic read model.** `inventory-service` caches order line items from `OrderCreated` into
 `order_snapshots` and reads that cache when `PaymentCompleted` arrives. If the snapshot hasn't
 landed yet (consumer lag across topics), `reserve_for_order` returns an error and the retry/DLQ
 logic in `consume_loop` gives it another shot.
 
-## Where this diverges from the Java version, and why
+## Design notes
 
-- **No dependency injection / repository interfaces.** Rust doesn't reward that indirection the
-  way Spring does — `db.rs` in each crate is just async functions taking a generic
-  `impl PgExecutor`, callable with either a pool or an open transaction. Less ceremony, same
-  guarantee (queries can run standalone or inside a caller-controlled transaction).
+- **No dependency injection / repository interfaces.** Rust doesn't reward that indirection —
+  `db.rs` in each crate is just async functions taking a generic `impl PgExecutor`, callable with
+  either a pool or an open transaction. Less ceremony, same guarantee (queries can run standalone
+  or inside a caller-controlled transaction).
 - **`consume_loop` is duplicated per service instead of shared.** Rust's async closures needed to
   parameterize a retry/DLQ loop are simple to write per-call-site but genuinely awkward to
   abstract over multiple handler signatures without a `Box<dyn Future>` allocation on every
   message. Three ~100-line copies were judged cheaper to maintain than that indirection for a
-  project this size — the same tradeoff Java resolves for free via `DefaultErrorHandler` beans.
-- **No Spring-style transaction propagation.** In the Java version, `@Transactional` methods
-  calling other `@Transactional` methods join the same transaction automatically. Rust has no
-  equivalent, so `saga.rs` in each service owns the transaction directly and calls plain
+  project this size.
+- **No automatic transaction propagation.** Nested calls don't implicitly join an outer
+  transaction, so `saga.rs` in each service owns the transaction directly and calls plain
   `service`/`db` functions with an explicit `&mut PgConnection` — more explicit, not more correct.
 - **rdkafka's consumer has no built-in consumer-group rebalance story exercised here.** Each
-  service runs a single instance per topic subscription (same as the demo's Java setup, which
-  also never scales a service past one replica) — group IDs are set for correctness/parity, not
-  because this code has been tested under rebalancing.
+  service runs a single instance per topic subscription — group IDs are set for
+  correctness/parity, not because this code has been tested under rebalancing.
 
 ## Running it
 

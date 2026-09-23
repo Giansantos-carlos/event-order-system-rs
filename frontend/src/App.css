@@ -1,0 +1,224 @@
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  text-align: left;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.subtitle {
+  color: var(--text);
+  max-width: 560px;
+  margin: 12px auto 0;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 0;
+}
+
+.panel h2 {
+  margin-bottom: 16px;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.order-form input,
+.order-form select {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 52px 64px auto;
+  gap: 6px;
+  align-items: center;
+}
+
+.item-row select {
+  font-size: 13px;
+  padding: 8px 4px;
+}
+
+.item-row input {
+  padding: 8px 6px;
+  text-align: right;
+}
+
+.item-row .remove-item {
+  padding: 8px 10px;
+  line-height: 1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--accent-border);
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 16px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--accent);
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty {
+  color: var(--text);
+}
+
+.order-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.order-id {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.status-badge.status-pending {
+  background: rgba(234, 179, 8, 0.15);
+  color: #b45309;
+}
+
+.status-badge.status-confirmed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.status-badge.status-cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}
+
+.spinner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.order-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 10px;
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.order-meta dt {
+  color: var(--text);
+}
+
+.order-meta dd {
+  margin: 0;
+  color: var(--text-h);
+}
+
+.order-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.error {
+  color: #b91c1c;
+  font-size: 14px;
+}

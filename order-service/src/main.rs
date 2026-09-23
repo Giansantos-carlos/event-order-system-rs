@@ -11,6 +11,7 @@ use axum::{
     Router,
 };
 use sqlx::postgres::PgPoolOptions;
+use tower_http::cors::{Any, CorsLayer};
 use tracing_subscriber::EnvFilter;
 
 #[derive(Clone)]
@@ -66,6 +67,7 @@ async fn main() -> anyhow::Result<()> {
                 async move { handle.render() }
             }),
         )
+        .layer(CorsLayer::new().allow_origin(Any).allow_methods(Any).allow_headers(Any))
         .with_state(state);
 
     let port: u16 = std::env::var("SERVER_PORT").ok().and_then(|p| p.parse().ok()).unwrap_or(8081);

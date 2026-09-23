@@ -1,3 +1,4 @@
+mod api;
 mod db;
 mod domain;
 mod kafka;
@@ -7,7 +8,13 @@ mod service;
 
 use axum::{routing::get, Router};
 use sqlx::postgres::PgPoolOptions;
+use tower_http::cors::{Any, CorsLayer};
 use tracing_subscriber::EnvFilter;
+
+#[derive(Clone)]
+pub struct AppState {
+    pool: sqlx::PgPool,
+}
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -37,11 +44,14 @@ async fn main() -> anyhow::Result<()> {
 
     let prometheus_handle = metrics_exporter_prometheus::PrometheusBuilder::new().install_recorder()?;
 
+    let state = AppState { pool: pool.clone() };
+
     tokio::spawn(outbox::run_publisher(pool.clone(), producer));
     tokio::spawn(kafka::run_order_events_listener(pool.clone(), bootstrap_servers.clone()));
     tokio::spawn(kafka::run_payment_events_listener(pool.clone(), bootstrap_servers.clone()));
 
     let app = Router::new()
+        .route("/stock", get(api::list_stock))
         .route("/actuator/health", get(|| async { "OK" }))
         .route(
             "/actuator/prometheus",
@@ -49,7 +59,9 @@ async fn main() -> anyhow::Result<()> {
                 let handle = prometheus_handle.clone();
                 async move { handle.render() }
             }),
-        );
+        )
+        .layer(CorsLayer::new().allow_origin(Any).allow_methods(Any).allow_headers(Any))
+        .with_state(state);
 
     let port: u16 = std::env::var("SERVER_PORT").ok().and_then(|p| p.parse().ok()).unwrap_or(8083);
     let listener = tokio::net::TcpListener::bind(("0.0.0.0", port)).await?;

@@ -7,6 +7,7 @@ edition.workspace = true
 event-contracts = { workspace = true }
 tokio = { workspace = true }
 axum = { workspace = true }
+tower-http = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 sqlx = { workspace = true }
