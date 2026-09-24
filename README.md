@@ -6,6 +6,61 @@ through Kafka (Redpanda), with no orchestrator.
 
 ## Architecture
 
+### Components
+
+```mermaid
+flowchart TB
+    FE["frontend (React)"]
+    Prom["Prometheus"]
+
+    subgraph Services[" "]
+        direction LR
+        Order["order-service :8081"]
+        Payment["payment-service :8082"]
+        Inventory["inventory-service :8083"]
+    end
+
+    DB1[(order_db)]
+    DB2[(payment_db)]
+    DB3[(inventory_db)]
+
+    subgraph Redpanda["Redpanda (Kafka)"]
+        direction LR
+        T1[[order-events]]
+        T2[[payment-events]]
+        T3[[inventory-events]]
+    end
+
+    FE -->|"POST /orders<br/>GET /orders/:id"| Order
+    FE -->|"GET /stock"| Inventory
+
+    Order --- DB1
+    Payment --- DB2
+    Inventory --- DB3
+
+    Order --> T1
+    T1 --> Payment
+    T1 --> Inventory
+
+    Payment --> T2
+    T2 --> Inventory
+    T2 --> Order
+
+    Inventory --> T3
+    T3 --> Order
+
+    Prom -.->|scrapes| Order
+    Prom -.->|scrapes| Payment
+    Prom -.->|scrapes| Inventory
+```
+
+Each service owns its own Postgres database and talks to the others exclusively through Kafka
+topics — no service calls another service's HTTP API. The only synchronous HTTP surface exposed to
+the outside world is `order-service` (create/read orders) and `inventory-service` (read-only
+`/stock`, used by the frontend to show live availability).
+
+### Saga flow
+
 Choreography-based saga: each service reacts to events published by its neighbors and decides
 what to do next. There is no central coordinator.
 
