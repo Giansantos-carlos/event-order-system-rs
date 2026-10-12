@@ -1,0 +1,95 @@
+Linguagens:  
+Java, Python, JavaScript, TypeScript, Kotlin, Rust, SQL, ADVPL/Protheus, ABAP.
+
+Backend e Frameworks:  
+Spring Boot, Spring Framework, Spring Security, Spring Data, JPA, Hibernate, REST APIs, APIs RESTful, microsserviços, arquitetura orientada a eventos, integração de sistemas, Web Services, Clean Architecture e Design Patterns.
+
+Java / Enterprise:  
+Java 8/11/17+, Maven, Gradle, JPA/Hibernate, Spring Boot, Spring Security, Spring Cloud, WebSphere Application Server (WAS), Java EE/Jakarta EE.
+
+Frontend:  
+JavaScript, TypeScript, HTML, CSS, Angular, RxJS, jQuery e Bootstrap.
+
+Mensageria e Integrações:  
+Apache Kafka, RabbitMQ, filas, eventos, processamento assíncrono, APIs REST, Web Services, integração com sistemas legados, ERPs e sistemas externos.
+
+Cloud / DevOps / Infraestrutura:  
+AWS, Docker, Kubernetes, CI/CD, Git, GitHub, GitLab, pipelines, containers, observabilidade, logs, métricas, monitoramento, troubleshooting e automação de deploy.
+
+Bancos de Dados:  
+SQL Server, PostgreSQL, MySQL, Oracle, MongoDB, bancos relacionais e NoSQL, modelagem de dados, SQL avançado, procedures, views, índices, otimização de queries e análise de performance.
+
+ERP e Sistemas Corporativos:  
+TOTVS Protheus, ADVPL, TOTVS Fluig, Sankhya ERP, SAP, ABAP, integrações com ERPs, automação de processos e desenvolvimento de soluções corporativas.
+
+IA / Generative AI / AI Engineering:  
+OpenAI/GPT, Claude, Llama, Claude Code, GitHub Copilot, LLMs, Generative AI, RAG, embeddings, bancos vetoriais, Prompt Engineering, agentes autônomos, Function/Tool Calling, MCP (Model Context Protocol), automação com IA e IA aplicada ao ciclo de desenvolvimento de software.
+
+AI Agents e Engenharia de Contexto:  
+Multi-Agents, Multi-Agent Systems, RAG com múltiplos agentes, Context Engineering, Harness Engineering, Spec-Driven Development, definição e gerenciamento de Rules, Skills e MCPs, agentes especializados, orquestração de agentes, uso de ferramentas e contexto estruturado para LLMs.
+
+Ferramentas e Ecossistema de Agentes:  
+OpenClaw, Hermes, Claude Code, MCP Servers, agentes baseados em LLM, workflows agentic, integração de agentes com ferramentas externas, automação de tarefas e desenvolvimento de aplicações orientadas a agentes.
+
+Arquitetura e Engenharia de Software:  
+System Design, arquitetura de microsserviços, sistemas distribuídos, APIs, integração de sistemas, escalabilidade, alta disponibilidade, resiliência, observabilidade, segurança, performance, refatoração, modernização de sistemas legados e arquitetura orientada a eventos.
+
+Ferramentas de desenvolvimento:  
+Git, GitHub, GitLab, Jira, Confluence, Maven, Gradle, Postman, Swagger/OpenAPI, IntelliJ IDEA, VS Code, Eclipse, Docker e Kubernetes.
+
+Metodologias e práticas:  
+Agile, Scrum, Kanban, CI/CD, Code Review, testes unitários, testes de integração, TDD, troubleshooting, análise de logs, monitoramento, documentação técnica e desenvolvimento orientado a boas práticas.
+
+Sistemas Operacionais e outros:  
+Linux, Windows, automação de processos, integração com APIs de terceiros, processamento de dados, sistemas legados, otimização de aplicações, segurança de APIs, OAuth, JWT, autenticação/autorização e desenvolvimento de soluções escaláveis.
+
+
+
+
+
+
+
+Especialista em Desenvolvimento BackEnd 
+
+
+Olá, Isabela! Tudo bem?
+
+Vi a oportunidade para atuar no time de Especialista em Desenvolvimento BackEnd, já realizei minha candidatura. Estou entrando em contato também por aqui porque me interessei bastante pela posição, principalmente pelo desafio de trabalhar com Java, backend, microsserviços e sistemas de alta criticidade.
+
+Acredito que minha experiência com Java, Spring Boot, APIs, microsserviços, arquitetura de sistemas, mensageria e desenvolvimento de soluções robustas e escaláveis tem bastante relação com o que vocês estão buscando.
+
+Também tenho forte experiência no desenvolvimento de software para diferentes áreas da logística, atuando em processos como transporte, contratação e gestão de fretes, operações, cargas, integração com transportadoras, ERP e automação de processos. Essa experiência me deu uma visão bastante ampla de sistemas críticos e de operações que precisam de confiabilidade, disponibilidade e eficiência.
+
+Além disso, venho me aprofundando bastante em AI Engineering e soluções baseadas em agentes, incluindo Context e Harness Engineering, Spec-Driven Development, Rules, Skills e MCPs, Multi-Agentes com RAG, além da experiência prática com OpenClaw e Hermes.
+
+Acredito que essa combinação entre engenharia de software, arquitetura, conhecimento de negócio e IA pode agregar bastante ao desafio de Fraud Prevention.
+
+Fico à disposição para conversarmos e agradeço pela atenção! 🚀
+
+Abraços, 
+Gian
+
+
+Possuo experiência prática com Inteligência Artificial aplicada ao desenvolvimento de software e à automação de processos, utilizando LLMs como GPT, Claude e Llama no dia a dia. Utilizo essas ferramentas para apoio à análise e geração de código, debugging, documentação, refatoração, análise de arquitetura e aceleração do ciclo de desenvolvimento.
+
+Também venho trabalhando com conceitos de RAG, agentes autônomos, tool/function calling e integração de LLMs com aplicações, utilizando principalmente Python e APIs de modelos. Tenho estudado e aplicado arquiteturas em que os agentes conseguem utilizar ferramentas, consultar bases de conhecimento e executar etapas de forma estruturada, sempre considerando aspectos como contexto, segurança, avaliação das respostas e confiabilidade.
+
+Um dos meus principais focos atualmente é integrar IA ao desenvolvimento de aplicações Java/Python e à modernização de sistemas legados, buscando transformar a IA em parte efetiva do ciclo de engenharia, e não apenas em uma ferramenta de produtividade.
+
+Além disso, utilizo ferramentas como Claude Code e GitHub Copilot no desenvolvimento diário, combinando IA com minha experiência em Java, Spring Boot, APIs, microsserviços, bancos de dados, cloud e arquitetura de sistemas.
+
+
+
+Olá! Tudo bem?
+
+Vi a oportunidade para atuar como Desenvolvedor Backend Kotlin/Java e me identifiquei bastante com o desafio, principalmente pela atuação com produtos bancários, microsserviços e soluções de alta criticidade.
+
+Tenho mais de 8 anos de experiência com Java, além de experiência com Kotlin, Spring Boot, microsserviços, APIs, integrações, PostgreSQL e bancos NoSQL. Também tenho vivência com testes unitários e de integração, arquitetura de software, observabilidade, mensageria e implantação end-to-end, acompanhando soluções desde o desenvolvimento até deploy e produção.
+
+Além do backend tradicional, venho atuando fortemente com Inteligência Artificial aplicada ao desenvolvimento de software, trabalhando com LLMs, RAG, agentes, integração de modelos via APIs, Claude/Claude Code e práticas como Spec-Driven Development, Context Engineering e Harness Engineering. Tenho buscado aplicar IA de forma prática para aumentar produtividade, qualidade de código, automação e evolução de sistemas.
+
+Gosto de atuar próximo da arquitetura, entendendo não apenas como implementar uma solução, mas principalmente por que determinadas decisões arquiteturais foram tomadas, sempre buscando qualidade, segurança, performance e evolução contínua.
+
+Acredito que a combinação de Java/Kotlin + Spring Boot + microsserviços + arquitetura + Cloud + IA possa agregar bastante ao time.
+
+Gostaria muito de participar do processo seletivo e conversar melhor sobre a oportunidade. Obrigado pela atenção!
